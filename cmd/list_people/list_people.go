@@ -7,7 +7,7 @@ import (
 	"log"
 	"os"
 
-	pb "github.com/toshiki-otaka/protocol-buffers-gotutorial/proto/gen/model/tutorialpb"
+	pb "github.com/toshiki-otaka/protocol-buffers-gotutorial/proto/gen/tutorialpb"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -37,16 +37,12 @@ func listPeople(w io.Writer, book *pb.AddressBook) {
 	}
 }
 
-// Main reads the entire address book from a file and prints all the
-// information inside.
 func main() {
 	if len(os.Args) != 2 {
 		log.Fatalf("Usage:  %s ADDRESS_BOOK_FILE\n", os.Args[0])
 	}
 	fname := os.Args[1]
 
-	// [START unmarshal_proto]
-	// Read the existing address book.
 	in, err := ioutil.ReadFile(fname)
 	if err != nil {
 		log.Fatalln("Error reading file:", err)
@@ -55,7 +51,6 @@ func main() {
 	if err := proto.Unmarshal(in, book); err != nil {
 		log.Fatalln("Failed to parse address book:", err)
 	}
-	// [END unmarshal_proto]
 
 	listPeople(os.Stdout, book)
 }

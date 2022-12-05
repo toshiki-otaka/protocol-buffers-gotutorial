@@ -4,7 +4,7 @@ package tutorial;
 import "google/protobuf/timestamp.proto";
 import "google/type/month.proto";
 
-option go_package = "model/tutorialpb";
+option go_package = "/tutorialpb";
 
 message Person {
   string name = 1;
